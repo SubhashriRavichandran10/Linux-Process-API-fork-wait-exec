@@ -24,6 +24,10 @@ Test the C Program for the desired output.
 # PROGRAM:
 
 ## C Program to print process ID and parent Process ID using Linux API system calls
+
+
+```
+
 #include <stdio.h>
 #include <sys/types.h>
 #include <unistd.h>
@@ -43,34 +47,23 @@ int main(void)
 	printf("The process id of parent function: %d\n",p_process_id);
 	return 0; }
 
+```
+
 ## OUTPUT
 
-$ ./pidcheck.o 
-The process id: 2382
-The process id of parent function: 2258
+![Screenshot 2024-04-30 223846](https://github.com/SubhashriRavichandran10/Linux-Process-API-fork-wait-exec/assets/145743413/ccc37bbf-aeb3-4e41-a646-bcce0da29932)
 
-$ ps 
-  PID TTY          TIME CMD
- 2258 pts/0    00:00:00 bash
- 2392 pts/0    00:00:00 ps
 
 ## C Program to create new process using Linux API system calls fork() and exit()
-#include <stdio.h>
-#include<stdlib.h>
-int main()
-{ int pid; 
-pid=fork(); 
-if(pid == 0) 
-{ printf("Iam child my pid is %d\n",getpid()); 
-printf("My parent pid is:%d\n",getppid()); 
-exit(0); } 
-else{ 
-printf("I am parent, my pid is %d\n",getpid()); 
-sleep(100); 
-exit(0);} 
-}
-#include <stdio.h>
-#include<stdlib.h>
+
+
+```
+
+#include <stdlib.h>
+#include <sys/wait.h>
+#include<stdio.h>
+#include<unistd.h>
+#include <sys/types.h>
 int main()
 { int pid; 
 pid=fork(); 
@@ -84,16 +77,26 @@ sleep(100);
 exit(0);} 
 }
 
+```
+
 ## OUTPUT
-$ ./forkcheck.o 
-I am parent, my pid is 13676
-Iam child my pid is 13677
-My parent pid is:13676
+
+
+![Screenshot 2024-04-30 223944](https://github.com/SubhashriRavichandran10/Linux-Process-API-fork-wait-exec/assets/145743413/d0598109-b2c3-485c-83ba-2f079c5ebc4b)
+
+
 
 
 ## C Program to execute Linux system commands using Linux API system calls exec() family
+
+
+
+```
+
 #include <stdlib.h>
 #include <sys/wait.h>
+#include<stdio.h>
+#include<unistd.h>
 #include <sys/types.h>
 int main()
 {       int status;
@@ -115,10 +118,17 @@ printf("Running ps with execlp. Now with path specified\n");
         printf("Done.\n");
         exit(0);}
 
+
+```
+
+
 ## OUTPUT
-$ ./execcheck2.o 
-Running ps with execlp
-child did not exit successfully
+
+
+
+![Screenshot 2024-04-30 224016](https://github.com/SubhashriRavichandran10/Linux-Process-API-fork-wait-exec/assets/145743413/e1a6f93c-0f6b-4075-9185-aee4006d6a9e)
+
+
 
 # RESULT:
 The programs are executed successfully.
